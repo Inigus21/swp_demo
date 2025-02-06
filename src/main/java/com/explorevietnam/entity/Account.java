@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private int roleId;
     private String passwordHash;
     private String firstName;
@@ -31,11 +31,11 @@ public class Account {
     private LocalDateTime deletedDate;
     private boolean isDelete;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -162,7 +162,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(int id, int roleId, String passwordHash, String firstName, String lastName, LocalDate dob,
+    public Account(long id, int roleId, String passwordHash, String firstName, String lastName, LocalDate dob,
             String address, String avatar, boolean isConfirmed, String status, String googleId, String fcmId,
             LocalDateTime createdDate, LocalDateTime updatedDate, LocalDateTime deletedDate, boolean isDelete) {
         this.id = id;
