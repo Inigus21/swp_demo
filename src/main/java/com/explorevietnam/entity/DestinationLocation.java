@@ -5,42 +5,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.*;
 
+@ToString
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "destination_location")
+@Table(name = "destination_locations")
 public class DestinationLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String name;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public DestinationLocation() {
-    }
-
-    public DestinationLocation(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "destinationLocation [id=" + id + ", name=" + name + "]";
-    }
-
 }
