@@ -10,6 +10,7 @@ import com.explorevietnam.enums.CostRange;
 import com.explorevietnam.enums.Region;
 import com.explorevietnam.enums.Type;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -79,17 +80,33 @@ public class Tour {
     @Column(name = "available_slot")
     private int availableSlot;
 
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TicketPrice> ticketPrices;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TourDepartureDate> tourDepartureDates;
+
     @ManyToOne // bi-directional
-    @JoinColumn(name = "departure_location_id")
+    @JoinColumn(name = "departure_location_id", nullable = false)
     private DepartureLocation departureLocation;
 
-    @ManyToMany
+    @ManyToMany // Bang trung gian tour_destination
     @JoinTable(name = "tour_destination", joinColumns = @JoinColumn(name = "tour_id"), inverseJoinColumns = @JoinColumn(name = "destination_id"))
     private List<DestinationLocation> destinationLocations;
 
-    @ManyToMany
+    @ManyToMany // Bang trung gian tour_transport
     @JoinTable(name = "tour_transport", joinColumns = @JoinColumn(name = "tour_id"), inverseJoinColumns = @JoinColumn(name = "transport_id"))
     private List<Transport> transports;
+
+    @ManyToMany // Bang trung gian tour_promotion
+    @JoinTable(name = "tour_promotion", joinColumns = @JoinColumn(name = "tour_id"), inverseJoinColumns = @JoinColumn(name = "promotion_id"))
+    private List<Promotion> promotions;
 
     @CreatedDate
     @Column(name = "created_date", nullable = false, updatable = false)
