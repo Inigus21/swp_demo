@@ -1,0 +1,428 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Top Header */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #0078C7;
+    color: white;
+    font-size: 14px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: white;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0078C7;
+}
+
+.navbar .logo span {
+    color: black;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 350px;
+    background: url('../assets/navbar.jpg') center/cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-bottom: 100px;
+}
+
+
+/* text old
+
+.hero-text {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 36px;
+}
+
+.hero span {
+    color: #0078C7;
+}
+
+.book-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #0078C7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.site-link {
+    margin-top: 10px;
+    color: #0078C7;
+} */
+
+/* Search Box */
+.search-box {
+    margin: -50px auto 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #f2f2f2;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tabs button.active {
+    background: #0078C7;
+    color: white;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.budget-slider {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 10px;
+    background: #0078C7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Top Destination Section */
+.top-destination {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.top-destination h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.top-destination p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Destination Grid */
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+.destination-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.destination-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.destination-item:hover img {
+    transform: scale(1.05);
+}
+
+.destination-name {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Tour Section */
+.tour-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.tour-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tour-section p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Tour Grid */
+.tour-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 5%;
+}
+
+.tour-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: 30%;
+}
+
+.tour-card:hover {
+    transform: translateY(-5px);
+}
+
+.tour-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tour-info {
+    padding: 15px;
+}
+
+.tour-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+
+.tour-price {
+    font-size: 16px;
+    font-weight: bold;
+    float: right;
+}
+
+.tour-details {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.tour-rating {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.tour-btn {
+    background-color: #0099ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.tour-btn:hover {
+    background-color: #007acc;
+}
+
+/* Client Reviews Section */
+.client-reviews {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.client-reviews h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.client-reviews p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Review Grid */
+.review-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 5%;
+}
+
+.review-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: 30%;
+    padding: 15px;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.review-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.review-card h4 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Footer Styles */
+.footer {
+    background: #f8f8f8;
+    padding: 40px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 5%;
+}
+
+.footer-logo h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer-logo p {
+    color: gray;
+    font-size: 14px;
+}
+
+.footer-contact h3,
+.footer-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-contact p,
+.footer-info ul li {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.footer-social i {
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.footer-call {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.footer-call:hover {
+    background: darkred;
+}
+
+.footer-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-info ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-info ul li a:hover {
+    color: #0099ff;
+}
