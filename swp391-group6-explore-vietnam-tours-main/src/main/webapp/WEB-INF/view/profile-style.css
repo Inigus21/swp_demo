@@ -1,0 +1,99 @@
+/* Cấu hình tổng thể */
+body {
+    background-color: #0866FF;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Khung chính */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    text-align: center;
+}
+
+/* Tiêu đề */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 .highlight {
+    color: #0866FF;
+    font-weight: bold;
+}
+
+/* Nhóm nhập dữ liệu */
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 20px;
+    padding: 12px;
+    margin: 10px;
+    flex: 1;
+}
+
+.input-group i {
+    color: #0866FF;
+    margin-right: 10px;
+}
+
+.input-group input {
+    border: none;
+    background: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+}
+
+/* Bố cục hai cột */
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .input-group {
+    width: 48%;
+}
+
+/* Ô nhập địa chỉ */
+.address {
+    width: 100%;
+}
+
+/* Nút bấm */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save {
+    background-color: #0866FF;
+    color: white;
+    font-weight: bold;
+}
+
+.change {
+    background: none;
+    border: 2px solid #0866FF;
+    color: #0866FF;
+    font-weight: bold;
+}
