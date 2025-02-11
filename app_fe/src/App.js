@@ -23,6 +23,7 @@ import StaffList from './Homepages/Admin/StaffList';
 import VerifyInformation from './Homepages/Customer/VerifyInformation';
 // import AppRoutes from './routes/AppRoutes';
 import './App.css';
+import Signup from './Homepages/Signup';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/tours" element={<TourList />} />
         <Route path="/tour/:id" element={<TourDetail />} />
         <Route path="/checkout" element={<Checkout />} />

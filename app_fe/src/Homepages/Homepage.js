@@ -1,26 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Homepage.css";
+import axios from 'axios';
 import { FaHotel, FaPlane, FaTree } from "react-icons/fa";
 import halong from '../assets/halong.jpg'
 import hue from '../assets/hue.jpg'
 import cantho from '../assets/cantho.jpg'
 import danang from '../assets/danang.jpg'
-import taybac from '../assets/taybac.jpg'
-import mocchau from '../assets/mocchau.jpg'
-import sapa from '../assets/sapa.jpg'
 import chilinh from '../assets/chilinh.jpg'
 import chihanh from '../assets/chihanh.jpg'
 import anhmanh from '../assets/anhmanh.jpg'
+import { Link } from "react-router-dom";
 const HomePage = () => {
   const [selectedTab, setSelectedTab] = useState("hotels");
   const [budget, setBudget] = useState([2677, 8803]);
+  const [tours, setTours] = useState([]);
 
+  useEffect(() => {
+    axios.get("http://localhost:5298/tours") //  API section tour
+      .then((response) => {
+        setTours(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching tours:", error);
+      });
+  }, []);
   return (
     <div className="homepage">
       {/* Header */}
       <header className="top-header">
         <div className="contact">📞 1900 1839 - From 8:00 AM to 11:00 PM daily.</div>
-        <div className="login">Login/Logout</div>
+        <div className="login">
+          <Link to="/Login">Login</Link> / <Link to="/signup">Sign Up</Link>
+        </div>
       </header>
 
       {/* Navbar */}
@@ -110,64 +121,28 @@ const HomePage = () => {
         <p>The most searched and recommended tours</p>
 
         <div className="tour-grid">
-          {/* Tour Card 1 */}
-          <div className="tour-card">
-            <img src={taybac} alt="Tây Bắc" />
-            <div className="tour-info">
-              <h3 className="tour-title">Tây Bắc</h3>
-              <span className="tour-price">3.999.000 đ</span>
-              <ul className="tour-details">
-                <li> 3 days and 2 nights</li>
-                <li> 5 star</li>
-                <li> Transportation</li>
-                <li> Food Facilities</li>
-              </ul>
-              <div className="tour-rating">
-                ⭐⭐⭐⭐⭐ <span>2544 views</span>
+          {tours.map((tour) => (
+            <div key={tour.id} className="tour-card">
+              <img src={tour.image} alt={tour.name} />
+              <div className="tour-info">
+                <h3 className="tour-title">{tour.name}</h3>
+                <span className="tour-price">{tour.price}</span>
+                <ul className="tour-details">
+                  <li>{tour.duration}</li>
+                  <li>5 star</li>
+                  <li>Transportation</li>
+                  <li>Food Facilities</li>
+                </ul>
+                <div className="tour-rating">
+                  {"⭐".repeat(tour.rating)} <span>{tour.views} views</span>
+                </div>
+                <button className="tour-btn">Book Now</button>
               </div>
-              <button className="tour-btn">Book Now</button>
             </div>
-          </div>
-
-          {/* Tour Card 2 */}
-          <div className="tour-card">
-            <img src={sapa} alt="Sapa" />
-            <div className="tour-info">
-              <h3 className="tour-title">Sapa</h3>
-              <span className="tour-price">3.999.000 đ</span>
-              <ul className="tour-details">
-                <li> 3 days and 2 nights</li>
-                <li> 5 star</li>
-                <li> Transportation</li>
-                <li> Food Facilities</li>
-              </ul>
-              <div className="tour-rating">
-                ⭐⭐⭐⭐⭐ <span>2544 views</span>
-              </div>
-              <button className="tour-btn">Book Now</button>
-            </div>
-          </div>
-
-          {/* Tour Card 3 */}
-          <div className="tour-card">
-            <img src={mocchau} alt="Mộc Châu" />
-            <div className="tour-info">
-              <h3 className="tour-title">Mộc Châu</h3>
-              <span className="tour-price">3.999.000 đ</span>
-              <ul className="tour-details">
-                <li> 3 days and 2 nights</li>
-                <li> 5 star</li>
-                <li> Transportation</li>
-                <li> Food Facilities</li>
-              </ul>
-              <div className="tour-rating">
-                ⭐⭐⭐⭐⭐ <span>2544 views</span>
-              </div>
-              <button className="tour-btn">Book Now</button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
+
 
       {/* Client Reviews Section */}
       <div className="client-reviews">
