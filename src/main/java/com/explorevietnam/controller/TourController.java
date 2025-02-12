@@ -1,15 +1,19 @@
 package com.explorevietnam.controller;
 
-import java.util.List;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-
-import com.explorevietnam.entity.Tour;
 import com.explorevietnam.service.TourService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.fasterxml.jackson.databind.JsonNode;
 
-@Controller
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
+
+@RestController
+@RequestMapping("/api")
 public class TourController {
     private final TourService tourService;
 
@@ -17,11 +21,13 @@ public class TourController {
         this.tourService = tourService;
     }
 
-    @GetMapping("/homepage")
-    public String getMethodName(Model model) {
-        List<Tour> tours = this.tourService.getAllTour();
-        model.addAttribute("tour-list", tours);
-        return "homepage";
+    @GetMapping("/tours")
+    public void redirectToHomepage(HttpServletResponse response) throws IOException {
+        response.sendRedirect("http://localhost:3000");
     }
 
+    @GetMapping("/register")
+    public RedirectView redirectToRegister() {
+        return new RedirectView("http://localhost:3000/signup");
+    }
 }

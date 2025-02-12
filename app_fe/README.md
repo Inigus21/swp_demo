@@ -2,6 +2,7 @@
 
 ```
 cd app_fe
+npm config set legacy-peer-deps true
 npm install
 npm start
 ```
