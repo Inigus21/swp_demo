@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
@@ -9,34 +9,34 @@ const Login = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
+        setError(""); // Xóa lỗi trước khi login
 
-        axios.get("http://localhost:5298/accounts")
-            .then(response => {
-                if (response.data && Array.isArray(response.data.accounts)) {
-                    const user = response.data.accounts.find(
-                        acc => acc.email === email && acc.password === password
-                    );
+        try {
+            const response = await axios.get("http://localhost:5298/accounts");
 
-                    if (user) {
-                        alert("Login successful!");
-                        navigate("/");
-                    } else {
-                        setError("Invalid email or password");
-                    }
+            if (Array.isArray(response.data)) {
+                const user = response.data.find(
+                    (acc) => acc.email === email && acc.password === password
+                );
+
+                if (user) {
+                    alert("Login successful!");
+                    navigate("/");
                 } else {
-                    setError("Error loading account data. Please try again later.");
+                    setError("Invalid email or password");
                 }
-            })
-            .catch(error => {
-                console.error("Error loading accounts:", error);
-                setError("Error connecting to server");
-            });
+            } else {
+                setError("Unexpected response format. Please try again later.");
+            }
+        } catch (error) {
+            console.error("Error loading accounts:", error);
+            setError("Error connecting to the server. Please try again later.");
+        }
     };
 
     return (
-
         <div className="login-wrapper">
             <div className="login-container">
                 <h2>Login</h2>
@@ -63,7 +63,6 @@ const Login = () => {
             </div>
         </div>
     );
-
 };
 
 export default Login;
