@@ -1,0 +1,78 @@
+/* Nền xanh xung quanh */
+.login-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container đăng nhập lớn hơn */
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    /* Tăng chiều rộng */
+    padding: 40px;
+    /* Tăng padding để hộp lớn hơn */
+    background-color: #ffffff;
+    border-radius: 15px;
+    /* Bo góc mềm mại hơn */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Tiêu đề */
+.login-container h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    /* Tăng kích thước chữ */
+    color: #333;
+}
+
+/* Ô nhập liệu lớn hơn */
+.login-input {
+    width: 100%;
+    padding: 15px;
+    /* Tăng kích thước ô input */
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    /* Chữ to hơn */
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Hiệu ứng khi focus vào ô nhập */
+.login-input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Nút đăng nhập lớn hơn */
+.login-button {
+    width: 100%;
+    padding: 15px;
+    /* Tăng kích thước nút */
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    /* Chữ to hơn */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Hiệu ứng hover cho nút */
+.login-button:hover {
+    background-color: #003f7f;
+}
+
+/* Thông báo lỗi */
+.error-message {
+    color: red;
+    font-size: 16px;
+    /* Tăng kích thước chữ lỗi */
+    margin-top: 12px;
+}
