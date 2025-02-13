@@ -24,6 +24,7 @@ import VerifyInformation from './Homepages/Customer/VerifyInformation';
 // import AppRoutes from './routes/AppRoutes';
 import './App.css';
 import Signup from './Homepages/Signup';
+import UserProfile from './Homepages/Customer/UserProject';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/tours" element={<TourList />} />
