@@ -49,6 +49,9 @@ public class Account {
     @Column(name = "dob", nullable = false)
     private LocalDate dob;
 
+    @Column(name = "email")
+    private LocalDate email;
+
     @Column(name = "address", length = 255)
     private String address;
 

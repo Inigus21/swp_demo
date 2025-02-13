@@ -13,5 +13,5 @@ Then app will run in localhost:3000
 ```
 npm start
 ```
-
+cd
 

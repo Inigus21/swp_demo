@@ -22,16 +22,9 @@ public class TourService {
         this.tourRepository = tourRepository;
     }
 
-    public JsonNode getAllTours() {
-        try {
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("data/tour.json");
-            if (inputStream == null) {
-                throw new RuntimeException("File tours.json not found in resources");
-            }
-            return objectMapper.readTree(inputStream).get("tours");
-        } catch (IOException e) {
-            throw new RuntimeException("Error reading tours.json", e);
-        }
+    public List<Tour> getAllTours() {
+        List<Tour> tours = this.tourRepository.findAll();
+        return tours;
     }
 
 }
