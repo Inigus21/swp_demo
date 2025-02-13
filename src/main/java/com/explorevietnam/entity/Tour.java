@@ -71,6 +71,9 @@ public class Tour {
     @Column(length = 150)
     private String duration;
 
+    @Column(length = 255)
+    private String image;
+
     @Column(name = "sight_seeing", length = 500)
     private String sightseeing;
 

@@ -11,12 +11,15 @@ import chihanh from '../assets/chihanh.jpg'
 import anhmanh from '../assets/anhmanh.jpg'
 import { Link } from "react-router-dom";
 const HomePage = () => {
-  const [selectedTab, setSelectedTab] = useState("hotels");
-  const [budget, setBudget] = useState([2677, 8803]);
-  const [tours, setTours] = useState([]);
+ 
+  const [tours, setTours] = useState([]); // Sửa lỗi thiếu khai báo state
+  const [location, setLocation] = useState("");
+  const [duration, setDuration] = useState("");
+  const [price, setPrice] = useState("");
+  const [filteredTours, setFilteredTours] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5298/tours") //  API section tour
+    axios.get("http://localhost:8080/tours?season=Spring") //  API section tour
       .then((response) => {
         setTours(response.data);
       })
@@ -24,6 +27,36 @@ const HomePage = () => {
         console.error("Error fetching tours:", error);
       });
   }, []);
+
+
+  const durations = [
+    "5 days 4 nights",
+    "3 days 2 nights",
+    "4 days 3 nights",
+    "7 days 6 nights",
+    "6 days 5 nights",
+    "2 days 1 night"
+  ];
+
+  const priceOptions = [
+    "under 300$",
+    "from 300$ to 500$",
+    "from 500$ to 800$",
+    "greater 800"
+  ];
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/tours", {
+        params: { location, duration, price }
+      });
+
+      setFilteredTours(response.data); // Sửa lỗi response.data.results
+    } catch (error) {
+      console.error("Error fetching tours:", error);
+    }
+  };
+
   return (
     <div className="homepage">
       {/* Header */}
@@ -57,38 +90,53 @@ const HomePage = () => {
 
       {/* Search Box */}
       <div className="search-box">
-        <div className="tabs">
-          <button className={selectedTab === "tours" ? "active" : ""} onClick={() => setSelectedTab("tours")}>
-            <FaTree /> Tours
-          </button>
-          <button className={selectedTab === "hotels" ? "active" : ""} onClick={() => setSelectedTab("hotels")}>
-            <FaHotel /> Hotels
-          </button>
-          <button className={selectedTab === "flights" ? "active" : ""} onClick={() => setSelectedTab("flights")}>
-            <FaPlane /> Flights
-          </button>
-        </div>
+  <h2>Search Tours</h2>
 
-        {/* Search Form */}
-        <div className="search-form">
-          <input type="text" placeholder="Enter Your Destination Location" />
-          <input type="date" />
-          <input type="date" />
-          <input type="number" placeholder="Duration" />
-          <input type="number" placeholder="Members" />
+  {/* Price, Location, Duration trên cùng một dòng */}
+  <div className="filters">
+    <select value={price} onChange={(e) => setPrice(e.target.value)}>
+      <option value="">Select Price Range</option>
+      {priceOptions.map((p, index) => (
+        <option key={index} value={p}>{p}</option>
+      ))}
+    </select>
 
-          {/* Budget Slider */}
-          <div className="budget-slider">
-            <label>Budget: ${budget[0]} - ${budget[1]}</label>
-            <input type="range" min="1000" max="10000" step="100"
-              value={budget[0]} onChange={(e) => setBudget([e.target.value, budget[1]])} />
-            <input type="range" min="1000" max="10000" step="100"
-              value={budget[1]} onChange={(e) => setBudget([budget[0], e.target.value])} />
-          </div>
+    <input
+      type="text"
+      placeholder="Enter Location"
+      value={location}
+      onChange={(e) => setLocation(e.target.value)}
+    />
 
-          <button className="search-btn">Search</button>
-        </div>
-      </div>
+    <select value={duration} onChange={(e) => setDuration(e.target.value)}>
+      <option value="">Select Duration</option>
+      {durations.map((d, index) => (
+        <option key={index} value={d}>{d}</option>
+      ))}
+    </select>
+  </div>
+
+  <button onClick={handleSearch}>Search</button>
+
+  {/* Display Results */}
+  <div className="search-results">
+    {filteredTours.length > 0 ? (
+      <ul>
+        {filteredTours.map((tour) => (
+          <li key={tour.id}>
+            <h3>{tour.name}</h3>
+            <p><strong>Location:</strong> {tour.destination}</p>
+            <p><strong>Duration:</strong> {tour.duration}</p>
+            <p><strong>Price:</strong> ${tour.price}</p>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p></p>
+    )}
+  </div>
+</div>
+
       {/* Top Destination Section */}
       <div className="top-destination">
         <h2>Top Destination</h2>

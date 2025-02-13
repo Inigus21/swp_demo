@@ -31,4 +31,8 @@ public class TourService {
     public void deleteTourById(long id) {
         this.tourRepository.deleteById(id);
     }
+
+    public List<Tour> findToursSeason(String season) {
+        return this.tourRepository.findByBestTime(season);
+    }
 }
