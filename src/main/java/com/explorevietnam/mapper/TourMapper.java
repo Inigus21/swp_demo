@@ -2,9 +2,9 @@ package com.explorevietnam.mapper;
 
 import com.explorevietnam.entity.Tour;
 import com.explorevietnam.model.TourModel;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring")
