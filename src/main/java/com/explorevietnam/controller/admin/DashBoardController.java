@@ -2,11 +2,9 @@ package com.explorevietnam.controller.admin;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
-import com.explorevietnam.entity.Tour;
 import com.explorevietnam.service.TourService;
-
-import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -19,16 +17,8 @@ public class DashBoardController {
         this.tourService = tourService;
     }
 
-    // @GetMapping("/tour")
-    // public List<Tour> getAllTours() {
-    // List<Tour> tours = this.tourService.getAllTours();
-    // return tours; // Trả về danh sách tour dưới dạng JSON
-    // }
     @GetMapping("/tour/db")
-    public void getAllTours() {
-        List<Tour> tours = this.tourService.getAllTours();
-        for (Tour tour : tours) {
-            System.out.println(tour);
-        }
+    public RedirectView redirectToFrontend() {
+        return new RedirectView("http://localhost:3000/admin");
     }
 }

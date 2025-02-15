@@ -1,0 +1,14 @@
+{
+    "tours": [
+        {
+            "id": 1,
+            "name": "Ha Long Bay Adventure",
+            "departureLocation": "Hanoi",
+            "price": 100,
+            "maxCapacity": 20,
+            "createdTime": "2024-02-14",
+            "deletedTime": null,
+            "isDeleted": false
+        }
+    ]
+}

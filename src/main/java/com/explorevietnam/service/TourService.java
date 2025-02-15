@@ -8,23 +8,22 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.explorevietnam.entity.Tour;
+import com.explorevietnam.mapper.TourMapper;
+import com.explorevietnam.model.TourModel;
 import com.explorevietnam.repository.TourRepository;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class TourService {
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private final TourRepository tourRepository;
 
-    public TourService(TourRepository tourRepository) {
-        this.tourRepository = tourRepository;
-    }
+    private final TourMapper tourMapper;
 
-    public List<Tour> getAllTours() {
+    public List<TourModel> getAllTours() {
         List<Tour> tours = this.tourRepository.findAll();
-        return tours;
+        return tourMapper.toTourModelList(tours);
     }
 
 }

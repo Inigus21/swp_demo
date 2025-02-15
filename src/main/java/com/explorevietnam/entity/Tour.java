@@ -27,11 +27,13 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @ToString
-@Builder
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Getter
+@Setter
+@Builder
 @Table(name = "tours")
 public class Tour {
     @Id
