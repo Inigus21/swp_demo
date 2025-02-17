@@ -1,26 +1,29 @@
 package com.explorevietnam.mapper;
 
-import com.explorevietnam.entity.Tour;
-import com.explorevietnam.model.TourModel;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import java.util.List;
+
+import com.explorevietnam.entity.Tour;
+import com.explorevietnam.model.TourModel;
 
 @Mapper(componentModel = "spring")
 public interface TourMapper {
+
+    // Maps a Tour entity to a TourModel
     TourModel toTourModel(Tour tour);
 
+    // Maps a list of Tour entities to a list of TourModels
     List<TourModel> toTourModelList(List<Tour> tours);
 
-    @Mapping(target = "category_id", ignore = true)
-    @Mapping(target = "posts", ignore = true)
-    @Mapping(target = "reviews", ignore = true)
-    @Mapping(target = "ticketPrices", ignore = true)
-    @Mapping(target = "tourDepartureDates", ignore = true)
-    @Mapping(target = "departureLocation", ignore = true)
-    @Mapping(target = "destinationLocations", ignore = true)
-    @Mapping(target = "transports", ignore = true)
-    @Mapping(target = "promotions", ignore = true)
+    // Maps a TourModel to a Tour entity
+    @Mapping(target = "posts", ignore = true) // Ignore the association with posts
+    @Mapping(target = "reviews", ignore = true) // Ignore the association with reviews
+    @Mapping(target = "imgs", ignore = true) // Ignore the association with imgs
+    @Mapping(target = "trips", ignore = true) // Ignore the association with trips
+    @Mapping(target = "schedules", ignore = true) // Ignore the association with schedules
+    @Mapping(target = "promotions", ignore = true) // Ignore the association with employees
     Tour toTourEntity(TourModel tourModel);
+
 }
